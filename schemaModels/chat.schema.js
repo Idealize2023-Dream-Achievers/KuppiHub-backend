@@ -12,25 +12,28 @@ const chatSchema = new Schema({
     type: String,
     required: true,
   },
-  replies: {
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "user",
-      required: true,
+
+  replies: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+        required: true,
+      },
+      message: {
+        type: String,
+        required: true,
+      },
+      time: {
+        type: String,
+        required: true,
+      },
+      likes: {
+        type: Number,
+        required: true,
+      },
     },
-    message: {
-      type: String,
-      required: true,
-    },
-    time: {
-      type: String,
-      required: true,
-    },
-  },
-  likes: {
-    type: Number,
-    required: true,
-  },
+  ],
 });
 
 module.exports = mongoose.model("chat", chatSchema);
